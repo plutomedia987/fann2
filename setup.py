@@ -116,6 +116,7 @@ setup(
                                          '../include', 'include'],
                            libraries=['doublefann'],
                            library_dirs=[fann_lib()],
+                           runtime_library_dirs=[fann_lib()],
                            define_macros=[("SWIG_COMPILE", None)]
                            ),
                  ]
