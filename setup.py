@@ -4,6 +4,7 @@ from setuptools import setup, Extension, find_packages
 import glob
 import os
 import sys
+import pathlib
 
 NAME = 'fann2'
 VERSION = '1.0.0'
