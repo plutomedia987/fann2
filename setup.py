@@ -66,7 +66,7 @@ def build_swig():
     print("running swig")
     swig_bin = find_swig()
     swig_cmd = '%s -c++ -python fann2/fann2.i' % swig_bin
-    print 'Running SWIG before:', swig_cmd
+    print('Running SWIG before:', swig_cmd)
     os.system(swig_cmd)
 
 if "sdist" not in sys.argv:
