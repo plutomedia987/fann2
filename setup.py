@@ -63,6 +63,11 @@ def find_swig():
 
 
 def build_swig():
+    #Add libraries to sys path
+    installLoc = str(list(pathlib.Path("/").glob("**/config/custom_libraries/libfann"))[0])
+    if installLoc not in sys.path:
+        sys.path.append(installLoc)    
+    
     print("running swig")
     swig_bin = find_swig()
     swig_cmd = '%s -c++ -python fann2/fann2.i' % swig_bin
