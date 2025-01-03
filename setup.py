@@ -99,7 +99,9 @@ setup(
     url='https://github.com/FutureLinkCorporation/fann2',
     license='GNU LESSER GENERAL PUBLIC LICENSE (LGPL)',
     dependency_links=[
-        "http://www.swig.org/download.html"],
+        "http://www.swig.org/download.html#egg=swig",
+        "git+https://github.com/plutomedia987/homeassistant_fann.git#egg=fannRepo"
+    ],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -111,6 +113,10 @@ setup(
     include_package_data=True,
     packages=find_packages(),
     py_modules=['fann2.libfann'],
+    install_requires=[ 
+        "swig", 
+        "fannRepo"
+    ],
     ext_modules=[Extension('fann2._libfann', ['fann2/fann2_wrap.cxx'],
                            include_dirs=['./include',
                                          '../include', 'include'],
