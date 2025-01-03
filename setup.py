@@ -63,11 +63,7 @@ def find_swig():
     raise Exception("Couldn't find swig2.0 binary!")
 
 
-def build_swig():
-    #Add libraries to sys path
-    installLoc = str(list(pathlib.Path("/").glob("**/config/custom_libraries/libfann"))[0])
-    if installLoc not in sys.path:
-        sys.path.append(installLoc)    
+def build_swig(): 
     
     print("running swig")
     swig_bin = find_swig()
@@ -80,10 +76,16 @@ if "sdist" not in sys.argv:
     build_swig()
 
 # This utility function searches for files
-
-
 def hunt_files(root, which):
     return glob.glob(os.path.join(root, which))
+
+def fann_lib():
+    #Add libraries to sys path
+    installLoc = str(list(pathlib.Path("/").glob("**/config/custom_libraries/libfann"))[0])
+    if installLoc not in sys.path:
+        sys.path.append(installLoc)   
+        
+    return installLoc
 
 setup(
     name=NAME,
@@ -97,7 +99,6 @@ setup(
     url='https://github.com/FutureLinkCorporation/fann2',
     license='GNU LESSER GENERAL PUBLIC LICENSE (LGPL)',
     dependency_links=[
-        "http://sourceforge.net/projects/fann/files/fann/2.2.0/FANN-2.2.0-Source.zip/download",
         "http://www.swig.org/download.html"],
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -114,8 +115,10 @@ setup(
                            include_dirs=['./include',
                                          '../include', 'include'],
                            libraries=['doublefann'],
+                           library_dirs=[fann_lib()],
                            define_macros=[("SWIG_COMPILE", None)]
                            ),
                  ]
 )
 
+# "http://sourceforge.net/projects/fann/files/fann/2.2.0/FANN-2.2.0-Source.zip/download",
