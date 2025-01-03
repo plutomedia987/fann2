@@ -114,7 +114,6 @@ setup(
     py_modules=['fann2.libfann'],
     install_requires=[ 
         "swig", 
-        "libfann @ git+https://github.com/plutomedia987/homeassistant_fann.git"
     ],
     ext_modules=[Extension('fann2._libfann', ['fann2/fann2_wrap.cxx'],
                            include_dirs=['./include',
